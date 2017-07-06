@@ -31,6 +31,7 @@ $(document).ready(function() {
     date = $('#datepicker').val().trim();
     company = $('.companyName').val().trim();
     title = $('.jobTitle').val().trim();
+    email = $('.emailSent').val().trim();
     phoneScreen = $('.phoneScreen').val().trim();
     inteviewDate = $('.interview-date').val().trim();
     offer = $('.offerMade').val().trim();
@@ -46,6 +47,7 @@ $(document).ready(function() {
       date: date,
       company: company,
       title: title,
+      email: email,
       phoneScreen: phoneScreen,
       inteviewDate: interviewDate,
       offer: offer
@@ -56,6 +58,7 @@ $(document).ready(function() {
     $('#datepicker').val('');
     $('.companyName').val('');
     $('.jobTitle').val('');
+    $('.emailSent').val('')
     $('.phoneScreen').val('');
     $('.interview-date').val('');
     $('.offerMade').val('');
@@ -73,6 +76,7 @@ $(document).ready(function() {
       row.append($('<td>').html(jobStatus.date));
       row.append($('<td>').html(jobStatus.company));
       row.append($('<td>').html(jobStatus.title));
+      row.append($('<td>').html(jobStatus.email));
       row.append($('<td>').html(jobStatus.phoneScreen));
       row.append($('<td>').html(jobStatus.inteviewDate));
       row.append($('<td>').html(jobStatus.offer));
