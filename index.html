@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Tracker</title>
+  <link href="https://fonts.googleapis.com/css?family=Ovo" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- adding bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/jquery-ui/jquery-ui.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="./assets/javascript/jobsearch.js"></script>
+</head>
+
+<body background="./assets/images/codingImage.jpg">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <img src="./assets/images/jobSearchIcon.svg" class="brand-image" />
+        <!--<a class="navbar-brand" href=""></a>-->
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="">Sign In</a></li>
+        <li><a href="">Sign Up</a></li>
+      </ul>
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <main>
+    <div class="container job-input">
+      <div id="form">
+      <div>
+        <label for="date-input">* Date</label>
+        <input class="input date-input" type="text" id="datepicker"><br>
+      </div>
+        <label for="company">*Company</label>
+        <input class="input companyName" type="text"><br>
+        <label for="title">*Job Title</label>
+        <input class="jobTitle" type="text"><br>
+        <label for="phoneScreen">phone screen</label>
+        <input class="input phoneScreen" type="text" id="datepicker"><br>
+        <label for="interview">interview</label>
+        <input class="input interview-date" type="text" id="datepicker"><br>
+        <label for="offer">Offer?</label>
+        <input class="input offerMade" type="text"><br>
+        <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submit-Info">Submit</button>
+      </div>
+    </div>
+    <div class="container container-job">
+      <div class="row jobApplication">
+        <h3>Job Applications</h3>
+      </div>
+      <div class="jobTable">
+        <table data-role="table" class="table" id="job-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Company</th>
+              <th>Title</th>
+              <th>Phone Screen</th>
+              <th>Interview Date</th>
+              <th>Offer</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="job-data">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="modal-date-input" data-modal-option>
+          <strong>Please fill in the required *fields*</strong>
+        </p>
+        <p class="modal-number-input" data-modal-option>
+          <strong>Please enter numbers only</strong>
+        </p>
+      </div>
+    </div>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+</body>
+
+</html>
