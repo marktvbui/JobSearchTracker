@@ -20,7 +20,7 @@ $(document).ready(function() {
   var offer ='';
   // function to display the calendar
   $(function() {
-    $('#datepicker').datepicker();
+    $('#datepicker, #datepicker1, #datepicker2').datepicker();
   });
 
   // on click function, retrieving data from input fields
