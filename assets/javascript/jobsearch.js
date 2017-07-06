@@ -32,7 +32,6 @@ $(document).ready(function() {
     $('#datepicker, #datepicker1, #datepicker2, #datepicker3, #datepicker4').datepicker();
   });
 
-  function SubmitJob() {
     // on click function, retrieving data from input fields
     $('#submit-Info').on('click', function(event) {
       // prevents page from refreshing when submit is clicked
@@ -47,10 +46,10 @@ $(document).ready(function() {
       offer = $('.offerMade').val().trim();
 
       // making sure required fields are entered
-      // if ((date === '') || (company === '') || (title === '') ) {
-      //   alertModal('date-input');
-      //   return false;
-      // }
+      if ((date === '') || (company === '') || (title === '') ) {
+        alertModal('date-input');
+        return false;
+      }
 
       // setting object (firebase only accepts objects)
       jobApplication = {
@@ -74,9 +73,8 @@ $(document).ready(function() {
       $('.offerMade').val('');
 
     })
-  }
 
-  function SubmitContact() {
+
     $('#submitContact').on('click', function(event){
       event.preventDefault();
       contactDate = $('#datepicker3').val();
@@ -89,10 +87,10 @@ $(document).ready(function() {
       contactMeeting = $('#datepicker4').val().trim();
       contactPotential = $('.potential').val().trim();
 
-      // if ( (contactDate === '') || (contactName === '') || (contactCompany === '') || (contactLinkedin === '')) {
-      //   alertModal('number-input');
-      //   return false;
-      // }
+      if ( (contactDate === '') || (contactName === '') || (contactCompany === '') || (contactLinkedin === '')) {
+        alertModal('number-input');
+        return false;
+      }
 
       contact = {
         date: contactDate,
@@ -119,7 +117,7 @@ $(document).ready(function() {
       $('.potential').val('');
 
     })
-  }
+
   function DisplayContacts() {
     database.ref('Contacts').on('child_added', function(snapshot2) {
       var contact = snapshot2.val();
@@ -189,6 +187,4 @@ $(document).ready(function() {
   // calling function to always display weight lost table
   DisplayJobStatus();
   DisplayContacts();
-  SubmitJob();
-  SubmitContact();
 });
