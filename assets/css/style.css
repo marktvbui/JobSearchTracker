@@ -7,7 +7,7 @@ body {
   font-weight: bold;
 }
 input {
-  width: 30%;
+  width: 25%;
 }
 label {
   width: 15%;
@@ -19,15 +19,17 @@ label {
     max-height: 65px;
     max-width: 65px;
 }
-h3 {
+h2, h3 {
     text-align: center;
 }
 #job-table {
     table-layout: fixed;
     min-height: 250px;
 }
-.container-job {
+.container-job, .container-contact {
     background-color: #00d7ed;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 td {
     text-align: center;

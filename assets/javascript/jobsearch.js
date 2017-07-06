@@ -18,54 +18,130 @@ $(document).ready(function() {
   var phoneScreen ='';
   var interviewDate ='';
   var offer ='';
+  var contactDate = '';
+  var contactName = '';
+  var contactCompany = '';
+  var contactPhone = '';
+  var contactEmail = '';
+  var contactLinkedin = '';
+  var contactEmailSent = '';
+  var contactMeeting = '';
+  var contactPotential = '';
   // function to display the calendar
   $(function() {
-    $('#datepicker, #datepicker1, #datepicker2').datepicker();
+    $('#datepicker, #datepicker1, #datepicker2, #datepicker3, #datepicker4').datepicker();
   });
 
-  // on click function, retrieving data from input fields
-  $('#submit-Info').on('click', function(event) {
-    // prevents page from refreshing when submit is clicked
-    event.preventDefault();
-    //setting weight and date variables to what was inputed
-    date = $('#datepicker').val().trim();
-    company = $('.companyName').val().trim();
-    title = $('.jobTitle').val().trim();
-    email = $('.emailSent').val().trim();
-    phoneScreen = $('.phoneScreen').val().trim();
-    inteviewDate = $('.interview-date').val().trim();
-    offer = $('.offerMade').val().trim();
+  function SubmitJob() {
+    // on click function, retrieving data from input fields
+    $('#submit-Info').on('click', function(event) {
+      // prevents page from refreshing when submit is clicked
+      event.preventDefault();
+      //setting weight and date variables to what was inputed
+      date = $('#datepicker').val().trim();
+      company = $('.companyName').val().trim();
+      title = $('.jobTitle').val().trim();
+      email = $('.emailSent').val().trim();
+      phoneScreen = $('.phoneScreen').val().trim();
+      inteviewDate = $('.interview-date').val().trim();
+      offer = $('.offerMade').val().trim();
 
-    // making sure required fields are entered
-    if ((date === '') || (company === '') || (title === '') ) {
-      alertModal('date-input');
-      return false;
-    }
+      // making sure required fields are entered
+      // if ((date === '') || (company === '') || (title === '') ) {
+      //   alertModal('date-input');
+      //   return false;
+      // }
 
-    // setting object (firebase only accepts objects)
-    jobApplication = {
-      date: date,
-      company: company,
-      title: title,
-      email: email,
-      phoneScreen: phoneScreen,
-      inteviewDate: interviewDate,
-      offer: offer
-    }
-    // pushing the jobApplication object into the database
-    database.ref('jobApplied').push(jobApplication);
-    // clears the input values after submit
-    $('#datepicker').val('');
-    $('.companyName').val('');
-    $('.jobTitle').val('');
-    $('.emailSent').val('')
-    $('.phoneScreen').val('');
-    $('.interview-date').val('');
-    $('.offerMade').val('');
+      // setting object (firebase only accepts objects)
+      jobApplication = {
+        date: date,
+        company: company,
+        title: title,
+        email: email,
+        phoneScreen: phoneScreen,
+        inteviewDate: interviewDate,
+        offer: offer
+      }
+      // pushing the jobApplication object into the database
+      database.ref('jobApplied').push(jobApplication);
+      // clears the input values after submit
+      $('#datepicker').val('');
+      $('.companyName').val('');
+      $('.jobTitle').val('');
+      $('.emailSent').val('')
+      $('.phoneScreen').val('');
+      $('.interview-date').val('');
+      $('.offerMade').val('');
 
+    })
+  }
 
-  })
+  function SubmitContact() {
+    $('#submitContact').on('click', function(event){
+      event.preventDefault();
+      contactDate = $('#datepicker3').val();
+      contactName = $('.personalName').val().trim();
+      contactCompany = $('.contactCompany').val().trim();
+      contactPhone = $('.phone').val().trim();
+      contactEmail = $('.email').val().trim();
+      contactLinkedin = $('.linkedIn').val();
+      contactEmailSent = $('.sentEmail').val().trim();
+      contactMeeting = $('#datepicker4').val().trim();
+      contactPotential = $('.potential').val().trim();
 
+      // if ( (contactDate === '') || (contactName === '') || (contactCompany === '') || (contactLinkedin === '')) {
+      //   alertModal('number-input');
+      //   return false;
+      // }
+
+      contact = {
+        date: contactDate,
+        name: contactName,
+        company: contactCompany,
+        phone: contactPhone,
+        email: contactEmail,
+        linkedIn: contactLinkedin,
+        sentemail: contactEmailSent,
+        meeting: contactMeeting,
+        potential: contactPotential
+      }
+
+      database.ref('Contacts').push(contact);
+
+      $('#datepicker3').val('');
+      $('.personalName').val('');
+      $('.contactCompany').val('');
+      $('.phone').val('');
+      $('.email').val('');
+      $('.linkedIn').val('');
+      $('.sentEmail').val('');
+      $('#datepicker4').val('');
+      $('.potential').val('');
+
+    })
+  }
+  function DisplayContacts() {
+    database.ref('Contacts').on('child_added', function(snapshot2) {
+      var contact = snapshot2.val();
+      console.log(contact);
+      var row = $('<tr>');
+      row.append($('<td>').html(contact.date));
+      row.append($('<td>').html(contact.name));
+      row.append($('<td>').html(contact.company));
+      row.append($('<td>').html(contact.linkedIn));
+      row.append($('<td>').html(contact.phone));
+      row.append($('<td>').html(contact.email));
+      row.append($('<td>').html(contact.sentEmail));
+      row.append($('<td>').html(contact.meeting));
+      row.append($('<td>').html(contact.potential));
+      row.append($('<td><a href="#">&times;</a></td>'));
+      // appending row items to the table
+      $('#contactTable').append(row);
+    }, function(errorObject) {
+      console.log('read failed: ' + errorObject);
+
+    })
+  }
   function DisplayJobStatus() {
     // accessing the database, each time a new element is added, function will automatically run
     database.ref('jobApplied').on('child_added', function(snapshot) {
@@ -112,4 +188,7 @@ $(document).ready(function() {
   });
   // calling function to always display weight lost table
   DisplayJobStatus();
+  DisplayContacts();
+  SubmitJob();
+  SubmitContact();
 });

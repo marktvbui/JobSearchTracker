@@ -35,6 +35,7 @@
   <main>
     <div class="container job-input">
       <div id="form">
+        <h2>Job Applications</h2>
         <label for="date-input">* Date</label>
         <input class="input date-input" type="text" id="datepicker"><br>
         <label for="company">*Company</label>
@@ -50,6 +51,28 @@
         <label for="offer">Offer?</label>
         <input class="input offerMade" type="text"><br>
         <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submit-Info">Submit</button>
+      </div>
+      <div>
+        <h2>Networking Contacts</h2>
+        <label for="date-input">* Date</label>
+        <input class="input date-input" type="text" id="datepicker3"><br>
+        <label for="name">*Name</label>
+        <input class="input personalName" type="text"><br>
+        <label for="company">*Company</label>
+        <input class="input contactCompany" type="text"><br>
+        <label for="linkedIn">*LinkedIn</label>
+        <input class="input linkedIn" type="text"><br>
+        <label for="phone">Phone</label>
+        <input class="input phone" type="text"><br>
+        <label for="email">Email</label>
+        <input class="input email" type="text"><br>
+        <label for="sentEmail">Email Sent</label>
+        <input class="input sentEmail" type="text"><br>
+        <label for="meeting">Meeting</label>
+        <input class="input meeting" type="text" id="datepicker4"><br>
+        <label for="potential">potential</label>
+        <input class="input potential" type="text"><br>
+        <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submitContact">Submit</button>
       </div>
     </div>
     <div class="container container-job">
@@ -76,6 +99,28 @@
         </table>
       </div>
     </div>
+    <div class="container container-contact">
+      <div class="row networkingContacts">
+        <h3>Networking Contacts</h3>
+      </div>
+      <div class="networkTable">
+        <table data-role="table" class="table" id="contactTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Company</th>
+              <th>LinkedIn</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Email Sent</th>
+              <th>Meeting</th>
+              <td>Potential</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
     <div id="myModal" class="modal">
 
       <!-- Modal content -->
@@ -85,7 +130,7 @@
           <strong>Please fill in the required *fields*</strong>
         </p>
         <p class="modal-number-input" data-modal-option>
-          <strong>Please enter numbers only</strong>
+          <strong>Please make sure all contact info is there!</strong>
         </p>
       </div>
     </div>
