@@ -24,10 +24,10 @@ h3 {
 }
 #job-table {
     table-layout: fixed;
-    min-height: 450px;
+    min-height: 250px;
 }
 .container-job {
-    background-color: #00ede1;
+    background-color: #00d7ed;
 }
 td {
     text-align: center;
@@ -36,10 +36,10 @@ th {
     text-align: center;
 }
 .navbar {
-    background-color: #00ede1;
+    background-color: #00d7ed;
 }
 .job-input {
-    background-color: #00ede1;
+    background-color: #00d7ed;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-top: 10px;
