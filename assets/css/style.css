@@ -5,14 +5,13 @@ body {
   min-height: 100%;
 }
 input {
-  width: 15%;
+  width: 30%;
 }
 label {
-  width: 20%;
+  width: 15%;
 }
 #datepicker {
     z-index: 1;
-    display: block;
 }
 .brand-image {
     max-height: 65px;
