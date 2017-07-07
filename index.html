@@ -36,42 +36,42 @@
     <div class="container job-input">
       <div id="form">
         <h2>Job Applications</h2>
-        <label for="date-input">* Date</label>
+        <label for="datepicker">* Date</label>
         <input class="input date-input" type="text" id="datepicker"><br>
         <label for="company">*Company</label>
-        <input class="input companyName" type="text"><br>
+        <input class="input companyName" type="text" id="company"><br>
         <label for="title">*Job Title</label>
-        <input class="jobTitle" type="text"><br>
+        <input class="jobTitle" type="text" id="title"><br>
         <label for="emailSent">Email Sent?</label>
-        <input class="emailSent" type="text"><br>
-        <label for="phoneScreen">phone screen</label>
+        <input class="emailSent" type="text" id="emailSent"><br>
+        <label for="datepicker1">phone screen</label>
         <input class="input phoneScreen" type="text" id="datepicker1"><br>
-        <label for="interview">interview</label>
+        <label for="datepicker2">interview</label>
         <input class="input interview-date" type="text" id="datepicker2"><br>
         <label for="offer">Offer?</label>
-        <input class="input offerMade" type="text"><br>
+        <input class="input offerMade" type="text" id="offer"><br>
         <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submit-Info">Submit</button>
       </div>
       <div>
         <h2>Networking Contacts</h2>
-        <label for="date-input">* Date</label>
+        <label for="datepicker3">* Date</label>
         <input class="input date-input" type="text" id="datepicker3"><br>
-        <label for="name">*Name</label>
-        <input class="input personalName" type="text"><br>
-        <label for="company">*Company</label>
-        <input class="input contactCompany" type="text"><br>
+        <label for="contactName">*Name</label>
+        <input class="input personalName" type="text" id="contactName"><br>
+        <label for="contactCompany">*Company</label>
+        <input class="input contactCompany" type="text" id="contactCompany"><br>
         <label for="linkedIn">*LinkedIn</label>
-        <input class="input linkedIn" type="text"><br>
+        <input class="input linkedIn" type="text" id="linkedIn"><br>
         <label for="phone">Phone</label>
-        <input class="input phone" type="text"><br>
+        <input class="input phone" type="text" id="phone"><br>
         <label for="email">Email</label>
-        <input class="input email" type="text"><br>
-        <label for="sentEmail">Email Sent</label>
-        <input class="input sentEmail" type="text"><br>
-        <label for="meeting">Meeting</label>
+        <input class="input email" type="text" id="email"><br>
+        <label for="sentContactEmail">Email Sent</label>
+        <input class="input sentEmail" type="text" id="sentContactEmail"><br>
+        <label for="datepicker4">Meeting</label>
         <input class="input meeting" type="text" id="datepicker4"><br>
         <label for="potential">potential</label>
-        <input class="input potential" type="text"><br>
+        <input class="input potential" type="text" id="potential"><br>
         <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submitContact">Submit</button>
       </div>
     </div>
@@ -113,9 +113,9 @@
               <th>LinkedIn</th>
               <th>Phone</th>
               <th>Email</th>
-              <th>Email Sent</th>
               <th>Meeting</th>
               <td>Potential</td>
+              <td>Update?</td>
             </tr>
           </thead>
         </table>

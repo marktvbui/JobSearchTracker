@@ -87,3 +87,6 @@ th {
     text-decoration: none;
     cursor: pointer;
 }
+#blankField {
+    min-width: 15%;
+}

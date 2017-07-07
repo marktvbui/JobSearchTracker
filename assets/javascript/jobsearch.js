@@ -32,6 +32,7 @@ $(document).ready(function() {
     $('#datepicker, #datepicker1, #datepicker2, #datepicker3, #datepicker4').datepicker();
   });
 
+  function GetJob() {
     // on click function, retrieving data from input fields
     $('#submit-Info').on('click', function(event) {
       // prevents page from refreshing when submit is clicked
@@ -73,8 +74,9 @@ $(document).ready(function() {
       $('.offerMade').val('');
 
     })
+  };
 
-
+  function GetContact (){
     $('#submitContact').on('click', function(event){
       event.preventDefault();
       contactDate = $('#datepicker3').val();
@@ -83,7 +85,6 @@ $(document).ready(function() {
       contactPhone = $('.phone').val().trim();
       contactEmail = $('.email').val().trim();
       contactLinkedin = $('.linkedIn').val();
-      contactEmailSent = $('.sentEmail').val().trim();
       contactMeeting = $('#datepicker4').val().trim();
       contactPotential = $('.potential').val().trim();
 
@@ -99,7 +100,6 @@ $(document).ready(function() {
         phone: contactPhone,
         email: contactEmail,
         linkedIn: contactLinkedin,
-        sentemail: contactEmailSent,
         meeting: contactMeeting,
         potential: contactPotential
       }
@@ -112,34 +112,36 @@ $(document).ready(function() {
       $('.phone').val('');
       $('.email').val('');
       $('.linkedIn').val('');
-      $('.sentEmail').val('');
       $('#datepicker4').val('');
       $('.potential').val('');
 
     })
+  };
 
   function DisplayContacts() {
     database.ref('Contacts').on('child_added', function(snapshot2) {
       var contact = snapshot2.val();
-      console.log(contact);
       var row = $('<tr>');
       row.append($('<td>').html(contact.date));
       row.append($('<td>').html(contact.name));
       row.append($('<td>').html(contact.company));
       row.append($('<td>').html(contact.linkedIn));
-      row.append($('<td>').html(contact.phone));
+      if (contact.phone === '') {
+        row.append($('<td>').html('<input class="input phone" type="text">'));
+      } else {
+        row.append($('<td>').html(contact.phone));
+      }
       row.append($('<td>').html(contact.email));
-      row.append($('<td>').html(contact.sentEmail));
       row.append($('<td>').html(contact.meeting));
       row.append($('<td>').html(contact.potential));
-      row.append($('<td><a href="#">&times;</a></td>'));
+      row.append($('<td><button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="blankField updateContact">Update</button></td>'));
       // appending row items to the table
       $('#contactTable').append(row);
     }, function(errorObject) {
       console.log('read failed: ' + errorObject);
-
     })
-  }
+  };
+
   function DisplayJobStatus() {
     // accessing the database, each time a new element is added, function will automatically run
     database.ref('jobApplied').on('child_added', function(snapshot) {
@@ -160,7 +162,13 @@ $(document).ready(function() {
     }, function(errorObject) {
       console.log('read failed: ' + errorObject);
     })
-  }
+  };
+
+  function updateContact() {
+    database.ref('Contacts').on('child_update', function(snapshot3) {
+      var updateContact = snapshot3.val();
+    })
+  };
 
   function alertModal(input) {
     // setting modal to hidden status
@@ -187,4 +195,6 @@ $(document).ready(function() {
   // calling function to always display weight lost table
   DisplayJobStatus();
   DisplayContacts();
+  GetContact();
+  GetJob();
 });
