@@ -27,9 +27,12 @@ h2, h3 {
     min-height: 250px;
 }
 .container-job, .container-contact {
-    background-color: #00d7ed;
     margin-top: 10px;
     margin-bottom: 10px;
+    background: -webkit-linear-gradient(left, #CC99CC, #aaeaf1, #CC99CC);
+    background: -o-linear-gradient(right, #CC99CC, #aaeaf1, #CC99CC);
+    background: -moz-linear-gradient(right, #CC99CC, #aaeaf1, #CC99CC);
+    background: linear-gradient(to right, #CC99CC, #aaeaf1, #CC99CC);
 }
 td {
     text-align: center;
@@ -38,14 +41,20 @@ th {
     text-align: center;
 }
 .navbar {
-    background-color: #00d7ed;
+  background: -webkit-linear-gradient(left, #CC99CC, #aaeaf1, #CC99CC);
+  background: -o-linear-gradient(right, #CC99CC, #aaeaf1, #CC99CC);
+  background: -moz-linear-gradient(right, #CC99CC, #aaeaf1, #CC99CC);
+  background: linear-gradient(to right, #CC99CC, #aaeaf1, #CC99CC);
 }
-.job-input {
-    background-color: #00d7ed;
+.job-input, .contact-input {
     margin-top: 10px;
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    background: -webkit-linear-gradient(left, #CC99CC, #aaeaf1, #CC99CC);
+    background: -o-linear-gradient(right, #CC99CC, #aaeaf1, #CC99CC);
+    background: -moz-linear-gradient(right, #CC99CC, #aaeaf1, #CC99CC);
+    background: linear-gradient(to right, #CC99CC, #aaeaf1, #CC99CC);
 }
 
 /* The Modal (background) */

@@ -26,7 +26,6 @@ $(document).ready(function() {
   var contactLinkedin = '';
   var contactEmailSent = '';
   var contactMeeting = '';
-  var contactPotential = '';
   // function to display the calendar
   $(function() {
     $('#datepicker, #datepicker1, #datepicker2, #datepicker3, #datepicker4').datepicker();
@@ -86,7 +85,6 @@ $(document).ready(function() {
       contactEmail = $('.email').val().trim();
       contactLinkedin = $('.linkedIn').val();
       contactMeeting = $('#datepicker4').val().trim();
-      contactPotential = $('.potential').val().trim();
 
       if ( (contactDate === '') || (contactName === '') || (contactCompany === '') || (contactLinkedin === '')) {
         alertModal('number-input');
@@ -100,8 +98,7 @@ $(document).ready(function() {
         phone: contactPhone,
         email: contactEmail,
         linkedIn: contactLinkedin,
-        meeting: contactMeeting,
-        potential: contactPotential
+        meeting: contactMeeting
       }
 
       database.ref('Contacts').push(contact);
@@ -113,7 +110,6 @@ $(document).ready(function() {
       $('.email').val('');
       $('.linkedIn').val('');
       $('#datepicker4').val('');
-      $('.potential').val('');
 
     })
   };
@@ -121,20 +117,28 @@ $(document).ready(function() {
   function DisplayContacts() {
     database.ref('Contacts').on('child_added', function(snapshot2) {
       var contact = snapshot2.val();
+      var key = snapshot2.key;
       var row = $('<tr>');
       row.append($('<td>').html(contact.date));
       row.append($('<td>').html(contact.name));
       row.append($('<td>').html(contact.company));
       row.append($('<td>').html(contact.linkedIn));
       if (contact.phone === '') {
-        row.append($('<td>').html('<input class="input phone" type="text">'));
+        row.append($('<td>').html('<input class="input updatePhone" type="text">'));
       } else {
         row.append($('<td>').html(contact.phone));
       }
+      if (contact.email === '') {
+        row.append($('<td>').html('<input class="input updateEmail" type="text"'));
+      } else {
       row.append($('<td>').html(contact.email));
+      }
+      if (contact.meeting === '') {
+        row.append($('<td>').html('<input class="input updateMeeting" type="text"'));
+      } else {
       row.append($('<td>').html(contact.meeting));
-      row.append($('<td>').html(contact.potential));
-      row.append($('<td><button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="blankField updateContact">Update</button></td>'));
+      }
+      row.append($('<td><button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="blankField updateContact" data-key="'+ key + '">Update</button></td>'));
       // appending row items to the table
       $('#contactTable').append(row);
     }, function(errorObject) {
@@ -147,6 +151,7 @@ $(document).ready(function() {
     database.ref('jobApplied').on('child_added', function(snapshot) {
       // sets jobApplied variable to current child added to firebase
       var jobStatus = snapshot.val();
+      var key = snapshot.key;
       // setting up table tr, td elements
       var row = $('<tr>');
       row.append($('<td>').html(jobStatus.date));
@@ -156,7 +161,7 @@ $(document).ready(function() {
       row.append($('<td>').html(jobStatus.phoneScreen));
       row.append($('<td>').html(jobStatus.inteviewDate));
       row.append($('<td>').html(jobStatus.offer));
-      row.append($('<td><a href="#">&times;</a></td>'));
+      row.append($('<td><a data-key="'+ key + '">&times;</a></td>'));
       // appending row items to the table
       $('#job-table').append(row);
     }, function(errorObject) {
@@ -183,14 +188,13 @@ $(document).ready(function() {
     })
   };
 
-  // this function currently removes the element from the page, working on removing from the database
-  $(function(){
-    $('table').on('click','tr a',function(e){
-       e.preventDefault();
-       var test = database.ref('weightStatus');
-       console.log(test);
-      $(this).parents('tr').remove();
-    });
+  // onclick event on my table, targetting the a tag (x)
+  $('table').on('click','a',function(e){
+    e.preventDefault();
+    // referring to the database, of 'this' child, targetting the data-key, and removing it
+    database.ref('jobApplied').child($(this).attr('data-key')).remove();
+    // removes the deleted element from the screen
+    $(this).parents('tr').remove();
   });
   // calling function to always display weight lost table
   DisplayJobStatus();

@@ -34,7 +34,7 @@
 
   <main>
     <div class="container job-input">
-      <div id="form">
+      <div id="form jobForm">
         <h2>Job Applications</h2>
         <label for="datepicker">* Date</label>
         <input class="input date-input" type="text" id="datepicker"><br>
@@ -52,7 +52,9 @@
         <input class="input offerMade" type="text" id="offer"><br>
         <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submit-Info">Submit</button>
       </div>
-      <div>
+    </div>
+    <div class="container contact-input">
+      <div id="form contactsForm">
         <h2>Networking Contacts</h2>
         <label for="datepicker3">* Date</label>
         <input class="input date-input" type="text" id="datepicker3"><br>
@@ -70,8 +72,6 @@
         <input class="input sentEmail" type="text" id="sentContactEmail"><br>
         <label for="datepicker4">Meeting</label>
         <input class="input meeting" type="text" id="datepicker4"><br>
-        <label for="potential">potential</label>
-        <input class="input potential" type="text" id="potential"><br>
         <button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="submitContact">Submit</button>
       </div>
     </div>
@@ -114,8 +114,7 @@
               <th>Phone</th>
               <th>Email</th>
               <th>Meeting</th>
-              <td>Potential</td>
-              <td>Update?</td>
+              <th>Update?</th>
             </tr>
           </thead>
         </table>
