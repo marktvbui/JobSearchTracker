@@ -28,7 +28,7 @@ $(document).ready(function() {
   var contactMeeting = '';
   // function to display the calendar
   $(function() {
-    $('#datepicker, #datepicker1, #datepicker2, #datepicker3, #datepicker4').datepicker();
+    $('#datepicker, #datepicker1, #datepicker2, #datepicker3, #datepicker4, #datepicker5').datepicker();
   });
 
   function GetJob() {
@@ -46,8 +46,8 @@ $(document).ready(function() {
       offer = $('.offerMade').val().trim();
 
       // making sure required fields are entered
-      if ((date === '') || (company === '') || (title === '') ) {
-        alertModal('date-input');
+      if ((!date) || (!company) || (!title) ) {
+        alertModal('job-input');
         return false;
       }
 
@@ -86,8 +86,8 @@ $(document).ready(function() {
       contactLinkedin = $('.linkedIn').val();
       contactMeeting = $('#datepicker4').val().trim();
 
-      if ( (contactDate === '') || (contactName === '') || (contactCompany === '') || (contactLinkedin === '')) {
-        alertModal('number-input');
+      if ( (!contactDate) || (!contactName) || (!contactCompany) || (!contactLinkedin)) {
+        alertModal('contact-input');
         return false;
       }
 
@@ -123,21 +123,12 @@ $(document).ready(function() {
       row.append($('<td>').html(contact.name));
       row.append($('<td>').html(contact.company));
       row.append($('<td>').html(contact.linkedIn));
-      if (contact.phone === '') {
-        row.append($('<td>').html('<input class="input updatePhone" type="text">'));
-      } else {
-        row.append($('<td>').html(contact.phone));
-      }
-      if (contact.email === '') {
-        row.append($('<td>').html('<input class="input updateEmail" type="text"'));
-      } else {
-      row.append($('<td>').html(contact.email));
-      }
-      if (contact.meeting === '') {
-        row.append($('<td>').html('<input class="input updateMeeting" type="text"'));
-      } else {
-      row.append($('<td>').html(contact.meeting));
-      }
+      var blankInput1 = (!contact.phone) ? row.append($('<td>').html('<input class="input updatePhone" type="text">')) : row.append($('<td>').html(contact.phone));
+      console.log(blankInput1);
+      var blankInput2 = (!contact.email) ? row.append($('<td>').html('<input class="input updateEmail" type="text"')) : row.append($('<td>').html(contact.email));
+      console.log(blankInput2);
+      var blankInput3 = (!contact.meeting) ? row.append($('<td>').html('<input class="input updateMeeting" type="text" id="datepicker5"')) : row.append($('<td>').html(contact.meeting));
+      console.log(blankInput3);
       row.append($('<td><button type="submit" class="btn btn-info btn-group-sm" value="Submit" id="blankField updateContact" data-key="'+ key + '">Update</button></td>'));
       // appending row items to the table
       $('#contactTable').append(row);

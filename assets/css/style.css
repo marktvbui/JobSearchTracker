@@ -7,7 +7,7 @@ body {
   font-weight: bold;
 }
 input {
-  width: 25%;
+  width: 35%;
 }
 label {
   width: 15%;
@@ -96,6 +96,6 @@ th {
     text-decoration: none;
     cursor: pointer;
 }
-#blankField {
-    min-width: 15%;
+.updatePhone {
+    min-width: 65% !important;
 }
